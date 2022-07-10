@@ -1,17 +1,19 @@
 import { useContext, useState, useEffect, createContext } from "react";
+import Router from "next/router";
 
-import { jsonStorage } from "../utils/storage-utils";
+import { useJsonStorage } from "../hooks/useLocalStorage";
+import { toast, ToastContainer } from "react-toastify";
 
 const AuthContext = createContext({});
 const storagePrefix = "programming-master-";
 
 function AuthProvider({ children }) {
-    const storedUser = jsonStorage(storagePrefix + "user");
-    const [user, setUser] = useState(storedUser.getItem());
+    const [user, setUser] = useJsonStorage(storagePrefix + "user")
 
     useEffect(() => {
-        if (user) {
-            storedUser.setItem(user);
+        if (user?.token && Router.pathname === "/login" || Router.pathname === "/login/sign-up") {
+            Router.push("/guides");
+            toast.success("Logged in successfully")
         }
     }, [user])
 
@@ -25,7 +27,6 @@ function AuthProvider({ children }) {
 function useAuth() {
     return useContext(AuthContext);
 }
-
 
 export {
     AuthContext,

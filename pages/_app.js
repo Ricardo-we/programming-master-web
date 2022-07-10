@@ -1,6 +1,7 @@
 import { Grommet, Heading } from "grommet";
 import Head from "next/head";
 import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 import "../styles/globals.css";
 import CustomLink from "../components/CustomLink";
@@ -10,6 +11,7 @@ import NavBar from "../components/NavBar";
 function MyApp({ Component, pageProps }) {
 	return (
 		<>
+			<ToastContainer />
 			<style>{`
 			.sidebar-link {
 				color: var(--secondary);

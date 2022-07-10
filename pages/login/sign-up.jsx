@@ -44,7 +44,6 @@ function Login() {
 
     return (
         <Box width="70%" style={{ minWidth: 200 }} margin="auto">
-            <ToastContainer />
             <AutoForm
                 validationSchema={validationSchema}
                 submitButtonOptions={{ primary: true, style: { padding: 5, width: "100%", textAlign: "center" } }}
