@@ -2,7 +2,7 @@ import AutoForm from "../../components/AutoForm";
 import * as yup from "yup";
 import { Box } from "grommet";
 
-function Login() {
+function Adminlogin() {
     const formFields = [
         {
             type: "text",
@@ -34,4 +34,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default Adminlogin;

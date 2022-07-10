@@ -51,23 +51,23 @@ function NavBar({ heading = "Programming Master", navStyle, children, ...props }
             `}</style>
 
             <style>{`
-                .sidebar-link {
-                    width: 100%;
-                    color: var(--black);
-                    transition: 500ms;
-                    font-size: var(--mid-text);
-                }
-                .sidebar-link:hover {
-                    background-color: #1a1a1a92;
-                }
                 .close-navbar-button {
                     position: absolute;
                     top: 0;
                     right: 0;
                 }
-
-            `}</style>
-
+                
+                `}</style>
+            {/* 
+                .sidebar-link:hover {
+                    background-color: #1a1a1a92;
+                }
+                .sidebar-link {
+                    width: 100%;
+                    color: var(--black);
+                    transition: 500ms;
+                    font-size: var(--mid-text);
+                } */}
             <Nav
                 gap="small"
                 align={navStyle?.align || "center"}

@@ -6,14 +6,10 @@ function CustomLink({ children, to = "", ...props }) {
             <style jsx>{`
             .base-anchor {
                 text-decoration: none;
-                color: var(--primary);
-            }
-            .base-anchor:hover {
-                text-decoration: underline;
             }
         `}</style>
             <Link href={to}>
-                <a className={`base-anchor ${props.className}`}>
+                <a style={props?.style} className={`base-anchor ${props.className}`}>
                     {children}
                 </a>
             </Link>
