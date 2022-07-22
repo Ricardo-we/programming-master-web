@@ -11,7 +11,7 @@ function AuthProvider({ children }) {
     const [user, setUser] = useJsonStorage(storagePrefix + "user")
 
     useEffect(() => {
-        if (user?.token && Router.pathname === "/login" || Router.pathname === "/login/sign-up") {
+        if (user?.token && (Router.pathname === "/login" || Router.pathname === "/login/sign-up")) {
             Router.push("/guides");
             toast.success("Logged in successfully")
         }
