@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Grommet, Heading } from "grommet";
 import Head from "next/head";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,20 +8,34 @@ import "../styles/globals.css";
 import CustomLink from "../components/CustomLink";
 import { AuthProvider } from "../contexts/AuthContext";
 import NavBar from "../components/NavBar";
+import ProgrammingLanguagesService from "../services/programming-languages.service";
+import SimpleAccordion from "../components/displayers/SimpleAccordion";
 
 function MyApp({ Component, pageProps }) {
+	const programmingLanguagesReq = ProgrammingLanguagesService();
+	const [programmingLanguages, setProgrammingLanguages] = useState([]);
+
+	useEffect(() => {
+		programmingLanguagesReq
+			.get_(undefined, {
+				params: { language_code: window.navigator.languages[1] },
+			})
+			.then((res) => setProgrammingLanguages(res.data));
+	}, []);
+
 	return (
 		<>
 			<ToastContainer />
 			<style>{`
 			.sidebar-link {
-				color: var(--secondary);
+				color: var(--black);
 				text-decoration: none;
 				transition: 500ms;
+				padding: 10px;
 				width: 100%;
 			}
 			.sidebar-link:hover {
-				background-color: var(--primary-translucid);
+				color: var(--light-gray);
 			}
 			.sidebar-link:focus {
 				background-color: var(--primary-translucid);
@@ -35,19 +50,37 @@ function MyApp({ Component, pageProps }) {
 					<Heading
 						level="3"
 						textAlign="left"
-						style={{ marginTop: "10px" }}
+						style={{ marginTop: "10px", paddingBlock: 10 }}
 					>
 						Programming master
 					</Heading>
 					<CustomLink to="/home" className="sidebar-link">
 						Home
 					</CustomLink>
-					<CustomLink
-						to="/programming-languages"
-						className="sidebar-link"
-					>
-						Guides
-					</CustomLink>
+					<SimpleAccordion
+						style={{ width: "100%", padding: "6px" }}
+						panels={[
+							{
+								label: "Programming languages",
+								content: (
+									<>
+										{programmingLanguages?.map(
+											(programmingLang) => (
+												<CustomLink
+													to={
+														"/programming-languages/guides/" +
+														programmingLang?.id
+													}
+												>
+													{programmingLang.name}
+												</CustomLink>
+											),
+										)}
+									</>
+								),
+							},
+						]}
+					/>
 					<CustomLink to="/login" className="sidebar-link">
 						Sign in
 					</CustomLink>

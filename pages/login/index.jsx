@@ -5,6 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import AutoForm from "../../components/AutoForm";
 import UserService from "../../services/user.service";
 import { useAuth } from "../../contexts/AuthContext";
+import CustomLink from "../../components/CustomLink"
 
 function Login() {
     const userService = UserService();
@@ -33,7 +34,7 @@ function Login() {
             <ToastContainer />
             <AutoForm
                 validationSchema={validationSchema}
-                title={<h3 style={{ width: "100%", textAlign: "left" }}>Login</h3>}
+                title={<h2 style={{ width: "100%", textAlign: "left", padding: 10 }}>Login</h2>}
                 initialValues={{ email: undefined, password: undefined }}
                 onSubmit={data => {
                     return userService.authenticate(data)
@@ -41,7 +42,10 @@ function Login() {
                         .catch(error => toast.error(error?.response?.data?.error?.message))
                 }}
                 fields={formFields}
+                submitButtonOptions={{ primary: true, style: { padding: 7, width: "100%", textAlign: "center" } }}
+                buttonText="Login"
             />
+            <CustomLink className="link" to="/login/sing-up">Not an account yet? Sign up!</CustomLink>
         </Box>
     );
 }

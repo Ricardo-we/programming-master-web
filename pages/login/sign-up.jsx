@@ -46,8 +46,8 @@ function Login() {
         <Box width="70%" style={{ minWidth: 200 }} margin="auto">
             <AutoForm
                 validationSchema={validationSchema}
-                submitButtonOptions={{ primary: true, style: { padding: 5, width: "100%", textAlign: "center" } }}
-                title={<h3 style={{ width: "100%", textAlign: "left" }}>Sign up</h3>}
+                submitButtonOptions={{ primary: true, style: { padding: 7, width: "100%", textAlign: "center" } }}
+                title={<h2 style={{ width: "100%", textAlign: "left", padding: 10 }}>Sign up</h2>}
                 buttonText="Sign up!"
                 initialValues={{}}
                 onSubmit={handleSubmit}

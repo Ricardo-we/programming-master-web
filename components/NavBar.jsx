@@ -13,11 +13,12 @@ function NavBar({ heading = "Programming Master", navStyle, children, ...props }
             <style jsx>{`
                 .sidebar {
                     position: absolute;
-                    left: -400px;
+                    left: -600px;
                     top: 0;
                     height: 100vh;
                     background-color: var(--white);
                     min-width: 250px;
+                    width: 300px;
                     max-width: 400px;
                     z-index: 1000;
                     transition: 500ms;
@@ -38,6 +39,7 @@ function NavBar({ heading = "Programming Master", navStyle, children, ...props }
                 }
 
                 .sidebar-open {
+                    transition: 500ms;
                     left: 0px;
                 }
 
@@ -102,7 +104,6 @@ function NavBar({ heading = "Programming Master", navStyle, children, ...props }
                             onClick={() => setNavBarOpen(false)}
                         />
                         <div className="nav-items-container" style={{ marginTop: 10 }}>
-
                             {children}
                         </div>
                     </div>

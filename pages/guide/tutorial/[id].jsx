@@ -7,9 +7,6 @@ import GuidesService from "../../../services/guides.service";
 import MdViewer from "../../../components/displayers/MdViewer";
 import CustomLink from "../../../components/CustomLink";
 
-const request = TutorialService();
-const guidesRequest = GuidesService();
-
 function Tutorial({ tutorial, guideTutorials }) {
     return (
         <>
@@ -46,7 +43,10 @@ function Tutorial({ tutorial, guideTutorials }) {
     );
 }
 export const getServerSideProps = async ({ query }) => {
+    const request = TutorialService();
+    const guidesRequest = GuidesService();
     const tutorial = await request.get_(query.id);
+
     const { id } = tutorial.data.guide;
     const guideTutorials = await guidesRequest.getGuideTutorials(id);
     return {

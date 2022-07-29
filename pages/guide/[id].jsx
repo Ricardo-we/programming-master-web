@@ -17,7 +17,7 @@ function Guide({ guide, tutorials }) {
             }
         `}</style>
             <Box margin="auto" width="80%">
-                <Heading level="2">{guide.title}</Heading>
+                <Heading style={{ marginBottom: 10 }} level="2">{guide.title}</Heading>
                 <MdViewer programmingLanguage={guide?.programming_language?.extension_name} >
                     {guide?.guide_contents_md || "# Not contents yet..."}
                 </MdViewer>

@@ -13,7 +13,6 @@ function ProgrammingLanguageGuides({ guides, errors }) {
     useEffect(() => {
         if (errors?.message) toast.error(errors.message)
     }, [errors])
-    console.log(guides)
 
     return (
         <>
